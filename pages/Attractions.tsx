@@ -2,43 +2,51 @@ import React from 'react';
 import { SEO } from '../components/SEO';
 import { MapPin, Flame, Snowflake, Utensils, Smile, Wind, Bus, Landmark, Trees, Shield, Sparkles, Wifi, CheckCircle, Tv, Coffee } from 'lucide-react';
 import { FadeIn, BlurReveal } from '../components/Animations';
+import { AttractionGallery } from '../components/AttractionGallery';
 
 export const Attractions: React.FC = () => {
   const onSiteAttractions = [
     {
-      title: "Strefa Wellness & Spa",
-      desc: "Zadbaj o ciało i ducha. Oferujemy saunę fińską oraz szeroki wachlarz zabiegów upiększających: manicure, pedicure, makijaż oraz zabiegi na twarz.",
-      image: "/images/attr-sauna.jpg",
-      icon: <Sparkles size={20} />
-    },
-    {
-      title: "Grill i Ogród",
-      desc: "Do dyspozycji Gości oddajemy przestronny ogród, taras słoneczny oraz miejsce na piknik. Posiadamy dedykowany sprzęt do grillowania i miejsce na ognisko.",
-      image: "/images/attr-grill.jpg",
-      icon: <Utensils size={20} />
-    },
-    {
-      title: "Dla Narciarzy",
-      desc: "Jesteśmy przygotowani na białe szaleństwo. Oferujemy przechowalnię nart, a na miejscu znajduje się wypożyczalnia sprzętu oraz szkółka narciarska.",
-      image: "/images/attr-ski.jpg",
-      icon: <Snowflake size={20} />
-    },
-    {
-      title: "Dla Rodzin",
+      title: "Plac zabaw",
       desc: "Dzieci są u nas mile widziane. Posiadamy bezpieczny plac zabaw na świeżym powietrzu oraz gry planszowe i puzzle na niepogodę.",
-      image: "/images/attr-playground.jpg",
+      images: ["/images/attractions/plac-zabaw2.jpg", "/images/attractions/plac-zabaw1.jpg"],
       icon: <Smile size={20} />
     },
     {
-      title: "Wspólna Przestrzeń",
-      desc: "Goście mogą korzystać ze wspólnej części rekreacyjnej z salą TV. To idealne miejsce na wieczorny relaks i integrację.",
-      image: "/images/attr-common.jpg",
-      icon: <Tv size={20} />
+      title: "Sauna",
+      desc: "Zadbaj o ciało i ducha. Oferujemy saunę fińską - idealne miejsce na relaks po dniu pełnym wrażeń.",
+      images: ["/images/attractions/sauna1.jpg", "/images/attractions/sauna.jpg", "/images/attractions/sauna-1.jpg"],
+      icon: <Sparkles size={20} />
     },
     {
-      title: "Ogólnodostępna Kuchnia",
+      title: "Grill",
+      desc: "Do dyspozycji Gości oddajemy przestronny ogród oraz dedykowany sprzęt do grillowania. Idealne miejsce na wspólne chwile.",
+      images: ["/images/attractions/grill2.jpg", "/images/attractions/grill3.jpg"],
+      icon: <Utensils size={20} />
+    },
+    {
+      title: "Ognisko",
+      desc: "Posiadamy miejsce na ognisko i piknik. To wyjątkowe miejsce sprzyja integracji i wspólnym wieczornym spotkaniom.",
+      images: [
+        "/images/attractions/ognisko1.jpg",
+        "/images/attractions/ognisko2.jpg",
+        "/images/attractions/ognisko3.jpg",
+        "/images/attractions/ognisko4.jpg",
+        "/images/attractions/ognisko5.jpg",
+        "/images/attractions/ognisko6.jpg"
+      ],
+      icon: <Flame size={20} />
+    },
+    {
+      title: "Wypożyczalnia nart",
+      desc: "Jesteśmy przygotowani na białe szaleństwo. Na miejscu znajduje się wypożyczalnia sprzętu narciarskiego oraz szkółka narciarska.",
+      images: ["/images/attractions/wypozyczalnianart.jpg"],
+      icon: <Snowflake size={20} />
+    },
+    {
+      title: "Kuchnia",
       desc: "Dla wygody naszych Gości udostępniamy w pełni wyposażoną kuchnię, gdzie można przygotować posiłki we własnym zakresie.",
-      image: "/images/attr-common.jpg",
+      images: ["/images/attractions/kuchnia.jpg"],
       icon: <Coffee size={20} />
     }
   ];
@@ -177,13 +185,9 @@ export const Attractions: React.FC = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
           {onSiteAttractions.map((attr, idx) => (
             <FadeIn key={idx} delay={idx * 100} className="bg-charcoal-800 border border-white/5 group hover:border-gold-500/30 transition-all duration-300 overflow-hidden flex flex-col">
-              <div className="relative h-64 overflow-hidden">
-                <img
-                  src={attr.image}
-                  alt={attr.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                <div className="absolute top-4 right-4 bg-charcoal-900/80 p-2 rounded-full text-gold-500 backdrop-blur-sm">
+              <div className="relative">
+                <AttractionGallery images={attr.images} alt={attr.title} />
+                <div className="absolute top-4 right-14 bg-charcoal-900/80 p-2 rounded-full text-gold-500 backdrop-blur-sm">
                   {attr.icon}
                 </div>
               </div>
