@@ -99,22 +99,20 @@ export const Home: React.FC = () => {
       {/* HERO SECTION - REFINED FOR PREMIUM LOOK */}
       <section className="relative h-screen w-full flex items-center justify-center overflow-hidden bg-charcoal-900 group">
 
-        {/* Hero Slider Images */}
-        {heroImages.map((img, index) => (
-          <div
-            key={img}
-            className={`absolute inset-0 z-1 transition-opacity duration-[2500ms] ease-in-out ${index === currentHeroIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
-              }`}
+        {/* Hero Video Background */}
+        <div className="absolute inset-0 z-1 w-full h-full overflow-hidden">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-cover scale-[1.05] animate-slow-zoom"
           >
-            <div className="w-full h-full overflow-hidden">
-              <img
-                src={img}
-                alt={`Willa Elena Szklarska Poręba - Widok ${index + 1}`}
-                className="w-full h-full object-cover animate-slow-zoom"
-              />
-            </div>
-          </div>
-        ))}
+            <source src="/videos/willa-elena_dron.webm" type="video/webm" />
+            <source src="/videos/willa-elena_dron.mp4" type="video/mp4" />
+            Twoja przeglądarka nie obsługuje nagrań wideo.
+          </video>
+        </div>
 
         {/* Overlays - Refined Gradients */}
         <div className="absolute inset-0 z-20 bg-gradient-to-b from-charcoal-900/60 via-charcoal-900/10 to-charcoal-900/90 pointer-events-none"></div>
